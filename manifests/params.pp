@@ -3,6 +3,7 @@ class cockpit::params {
   case $::osfamily {
     'RedHat': {
       $manage_repo     = true
+      $yum_preview_repo = false
       $manage_package  = true
       $package_name    = 'cockpit'
       $package_version = 'installed'
