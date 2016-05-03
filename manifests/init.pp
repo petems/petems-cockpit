@@ -34,6 +34,7 @@ class cockpit (
   $package_version = $::cockpit::params::package_version,
   $service_name    = $::cockpit::params::service_name,
   $service_ensure  = $::cockpit::params::service_ensure,
+  $yum_preview_repo = $::cockpit::params::yum_preview_repo,
 ) inherits ::cockpit::params {
 
   validate_string($logintitle)

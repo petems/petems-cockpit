@@ -1,6 +1,6 @@
 class cockpit::repo::centos {
 
-  if $::cockpit::preview_repo {
+  if $::cockpit::yum_preview_repo {
 
     yumrepo { 'group_cockpit-cockpit-preview':
       ensure              => 'present',
@@ -18,6 +18,7 @@ class cockpit::repo::centos {
       ensure     => 'present',
       descr      => 'CentOS-$releasever - Extras',
       gpgcheck   => '1',
+      enabled    => '1',
       gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7',
       mirrorlist => 'http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras&infra=$infra',
     }
