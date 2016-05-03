@@ -26,6 +26,9 @@
 #
 # @param service_ensure [String] What status the service should be enforced to
 #
+# @param yum_preview_repo [String] Whether to use the preview Yum repos to
+#   install package. See https://copr.fedorainfracloud.org/coprs/g/cockpit/cockpit-preview/
+#
 class cockpit (
   $logintitle     = $::cockpit::params::logintitle,
   $manage_package  = $::cockpit::params::manage_package,
@@ -34,6 +37,7 @@ class cockpit (
   $package_version = $::cockpit::params::package_version,
   $service_name    = $::cockpit::params::service_name,
   $service_ensure  = $::cockpit::params::service_ensure,
+  $yum_preview_repo = $::cockpit::params::yum_preview_repo,
 ) inherits ::cockpit::params {
 
   validate_string($logintitle)

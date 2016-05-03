@@ -19,6 +19,7 @@ group :test do
   gem 'puppetlabs_spec_helper'
   gem 'simplecov'
   gem 'metadata-json-lint'
+  gem 'rspec-puppet-facts'
 end
 
 group :development do
