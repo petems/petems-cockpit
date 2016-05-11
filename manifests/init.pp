@@ -12,11 +12,18 @@
 #
 # @author Peter Souter
 #
+# @param allowunencrypted [Boolean] If true, cockpit will accept unencrypted HTTP connections.
+#   Otherwise, it redirects all HTTP connections to HTTPS.
+#   Exceptions are connections from localhost and for certain URLs (like /ping).
+#
 # @param logintitle [String] Title to show on login screen for cockpit
 #
 # @param manage_package [Boolean] Whether to manage the cockpit package
 #
 # @param manage_repo [Boolean] Whether to manage the package repositroy
+#
+# @param maxstartups [String] Specifies the maximum number of concurrent login attempts allowed
+#   Additional connections will be dropped until authentication succeeds or the connections are closed.
 #
 # @param package_name [String] Name of the cockpit package
 #
@@ -37,6 +44,8 @@ class cockpit (
   $package_version = $::cockpit::params::package_version,
   $service_name    = $::cockpit::params::service_name,
   $service_ensure  = $::cockpit::params::service_ensure,
+  $allowunencrypted = $::cockpit::params::allowunencrypted,
+  $maxstartups      = $::cockpit::params::maxstartups,
   $yum_preview_repo = $::cockpit::params::yum_preview_repo,
 ) inherits ::cockpit::params {
 
