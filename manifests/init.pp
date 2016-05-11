@@ -29,33 +29,37 @@
 #
 # @param package_version [String] Version of the cockpit package to install
 #
-# @param service_name [String] Name of the cockpit service to manage
-#
 # @param service_ensure [String] What status the service should be enforced to
+#
+# @param service_name [String] Name of the cockpit service to manage
 #
 # @param yum_preview_repo [String] Whether to use the preview Yum repos to
 #   install package. See https://copr.fedorainfracloud.org/coprs/g/cockpit/cockpit-preview/
 #
 class cockpit (
-  $logintitle     = $::cockpit::params::logintitle,
-  $manage_package  = $::cockpit::params::manage_package,
-  $manage_repo     = $::cockpit::params::manage_repo,
-  $package_name    = $::cockpit::params::package_name,
-  $package_version = $::cockpit::params::package_version,
-  $service_name    = $::cockpit::params::service_name,
-  $service_ensure  = $::cockpit::params::service_ensure,
   $allowunencrypted = $::cockpit::params::allowunencrypted,
+  $logintitle       = $::cockpit::params::logintitle,
+  $manage_package   = $::cockpit::params::manage_package,
+  $manage_repo      = $::cockpit::params::manage_repo,
   $maxstartups      = $::cockpit::params::maxstartups,
+  $package_name     = $::cockpit::params::package_name,
+  $package_version  = $::cockpit::params::package_version,
+  $service_ensure   = $::cockpit::params::service_ensure,
+  $service_name     = $::cockpit::params::service_name,
   $yum_preview_repo = $::cockpit::params::yum_preview_repo,
 ) inherits ::cockpit::params {
 
-  validate_string($logintitle)
+
+  validate_bool($allowunencrypted)
   validate_bool($manage_package)
   validate_bool($manage_repo)
+
+  validate_string($logintitle)
+  validate_string($maxstartups)
   validate_string($package_name)
   validate_string($package_version)
-  validate_string($service_name)
   validate_string($service_ensure)
+  validate_string($service_name)
 
   class { '::cockpit::repo': } ->
   class { '::cockpit::install': } ->
