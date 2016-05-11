@@ -11,6 +11,9 @@ class cockpit::repo {
           'CentOS': {
             include ::cockpit::repo::centos
           }
+          'Fedora': {
+            include ::cockpit::repo::fedora
+          }
           default: {
             # code
           }

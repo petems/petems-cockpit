@@ -18,3 +18,9 @@ matrix:
     env: PUPPET_VERSION="3.8.4" BEAKER_set="centos-7-docker"
     script: bundle exec rake acceptance
     bundler_args: --without development
+  - rvm: '2.1'
+    sudo: required
+    services: docker
+    env: PUPPET_VERSION="3.8.4" BEAKER_set="fedora-22-docker"
+    script: bundle exec rake acceptance
+    bundler_args: --without development
