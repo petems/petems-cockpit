@@ -11,6 +11,8 @@ class cockpit::params {
       $manage_service  = true
       $service_ensure  = 'running'
       $logintitle      = $::fqdn
+      $allowunencrypted = false
+      $maxstartups      = '10'
     }
     default: {
       fail("${::operatingsystem} not supported")

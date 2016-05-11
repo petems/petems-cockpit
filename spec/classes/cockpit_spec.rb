@@ -24,6 +24,33 @@ describe 'cockpit' do
       :show_diff => true,
       ) }
 
+    it { should contain_ini_setting('Cockpit LoginTitle').with(
+      :ensure    => 'present',
+      :path      => '/etc/cockpit/cockpit.conf',
+      :section   => 'WebService',
+      :setting   => 'LoginTitle',
+      :value     => facts[:fqdn],
+      :show_diff => true,
+      ) }
+
+    it { should contain_ini_setting('Cockpit MaxStartups').with(
+      :ensure    => 'present',
+      :path      => '/etc/cockpit/cockpit.conf',
+      :section   => 'WebService',
+      :setting   => 'MaxStartups',
+      :value     => '10',
+      :show_diff => true,
+      ) }
+
+    it { should contain_ini_setting('Cockpit AllowUnencrypted').with(
+      :ensure    => 'present',
+      :path      => '/etc/cockpit/cockpit.conf',
+      :section   => 'WebService',
+      :setting   => 'AllowUnencrypted',
+      :value     => false,
+      :show_diff => true,
+      ) }
+
     it { should contain_service('cockpit').with(
       :ensure => 'running',
       :enable => 'true'
