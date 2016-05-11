@@ -38,9 +38,9 @@ By default, this module will:
 
 ### Beginning with cockpit
 
-On RHEL, Cockpit exists in most upstream repos by default, but you can enable
+On RHEL, Cockpit exists in most upstream repos by default, but you can also get preview releases (See https://copr.fedorainfracloud.org/coprs/g/cockpit/cockpit-preview/)
 
-On Fedora, it's already setup by default.
+On other Operating Systems, repositories are maintained seperately.
 
 Configuration is mainly configured in `/etc/cockpit/cockpit.conf`
 

@@ -15,6 +15,8 @@ describe 'cockpit' do
 
     context 'repo enabled' do
       let(:params) {{ 'manage_repo' => true }}
+      it { should contain_class('Cockpit::Repo::Centos')}
+
       it { should contain_yumrepo('extras').with(
         :descr    => 'CentOS-$releasever - Extras',
         :enabled  => '1',
