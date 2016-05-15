@@ -9,6 +9,7 @@ HOSTS:
       - dnf -y install findutils hostname
       - dnf clean all
     docker_cmd: '["/sbin/init"]'
+    docker_preserve_image: true
 CONFIG:
   type: foss
   log_level: debug
