@@ -9,10 +9,23 @@ class cockpit::repo {
 
         case $::operatingsystem {
           'CentOS': {
-            include ::cockpit::repo::centos
+            require ::cockpit::repo::centos
           }
           'Fedora': {
-            include ::cockpit::repo::fedora
+            require ::cockpit::repo::fedora
+          }
+          default: {
+            # code
+          }
+        }
+      }
+      'Debian': {
+        case $::operatingsystem {
+          'Ubuntu': {
+            require ::cockpit::repo::ubuntu
+          }
+          'Debian': {
+            require ::cockpit::repo::debian
           }
           default: {
             # code

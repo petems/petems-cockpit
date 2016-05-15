@@ -6,6 +6,9 @@ class cockpit::params {
     'RedHat': {
       $yum_preview_repo = false
     }
+    'Debian': {
+      $yum_preview_repo = undef
+    }
     default: {
       fail("${::operatingsystem} not supported")
     }
