@@ -53,7 +53,7 @@ describe 'cockpit' do
 
     it { should contain_service('cockpit').with(
       :ensure => 'running',
-      :enable => 'true'
+      # :enable => 'true'
       )}
     it { should contain_package('cockpit').with_ensure('installed') }
 

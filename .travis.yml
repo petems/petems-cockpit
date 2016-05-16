@@ -15,12 +15,24 @@ matrix:
   - rvm: '2.1'
     sudo: required
     services: docker
-    env: PUPPET_VERSION="3.8.4" BEAKER_set="centos-7-docker"
+    env: PUPPET_INSTALL_TYPE=foss BEAKER_set="centos-7-docker"
     script: bundle exec rake acceptance
     bundler_args: --without development
   - rvm: '2.1'
     sudo: required
     services: docker
-    env: PUPPET_VERSION="3.8.4" BEAKER_set="fedora-22-docker"
+    env: PUPPET_INSTALL_VERSION="1.4.2" PUPPET_INSTALL_TYPE=agent BEAKER_set="fedora-22-docker"
+    script: bundle exec rake acceptance
+    bundler_args: --without development
+  - rvm: '2.1'
+    sudo: required
+    services: docker
+    env: PUPPET_INSTALL_VERSION="1.4.2" PUPPET_INSTALL_TYPE=agent BEAKER_set="ubuntu-1604-docker"
+    script: bundle exec rake acceptance
+    bundler_args: --without development
+  - rvm: '2.1'
+    sudo: required
+    services: docker
+    env: PUPPET_INSTALL_TYPE=foss BEAKER_set="debian-8-docker"
     script: bundle exec rake acceptance
     bundler_args: --without development
