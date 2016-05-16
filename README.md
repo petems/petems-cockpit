@@ -10,7 +10,6 @@
     * [Setup requirements](#setup-requirements)
     * [Beginning with cockpit](#beginning-with-cockpit)
 4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
 
@@ -38,11 +37,16 @@ By default, this module will:
 
 ### Beginning with cockpit
 
-On RHEL, Cockpit exists in most upstream repos by default, but you can also get preview releases (See https://copr.fedorainfracloud.org/coprs/g/cockpit/cockpit-preview/)
+Most of cockpit's setup is handled by the package itself.
 
-On other Operating Systems, repositories are maintained seperately.
+Configuration is mainly configured in `/etc/cockpit/cockpit.conf` but there's also changes in the invidual `systemd` files for things like listening port, such as `/etc/systemd/system/cockpit.socket.d/listen.conf`.
 
-Configuration is mainly configured in `/etc/cockpit/cockpit.conf`
+On RHEL, Cockpit exists in most upstream repos by default, but you can also get preview releases also (See https://copr.fedorainfracloud.org/coprs/g/cockpit/cockpit-preview/)
+
+On other Operating Systems, repositories are maintained seperately:
+
+* Ubuntu: https://launchpad.net/~jpsutton/+archive/ubuntu/cockpit
+* Debian: https://fedorapeople.org/groups/cockpit/debian
 
 Full docs are avaliable here: http://cockpit-project.org/guide/latest/
 
@@ -62,15 +66,10 @@ class { '::cockpit':
 }
 ```
 
-## Reference
-
-
-
 ## Limitations
 
-This module currently only works with CentOS 7, but I'm working on extending it for most standard RHEL distributions.
-
-Cockpit is also avaliable for Arch, Debian and Ubuntu. I might eventually get around to setting it up for those OS's in the future.
+* Configuration of `/etc/systemd/system/cockpit.socket.d/listen.conf` is currently not implemented
+Arch support is currently not implemented.
 
 ## Development
 
