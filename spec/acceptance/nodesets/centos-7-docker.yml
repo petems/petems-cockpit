@@ -5,6 +5,7 @@ HOSTS:
     image: centos:7
     docker_preserve_image: true
     docker_cmd: '["/sbin/init"]'
+    docker_preserve_image: true
 CONFIG:
   type: foss
   log_level: debug

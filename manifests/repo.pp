@@ -6,7 +6,6 @@ class cockpit::repo {
 
     case $::osfamily {
       'RedHat': {
-
         case $::operatingsystem {
           'CentOS': {
             require ::cockpit::repo::centos
