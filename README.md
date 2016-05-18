@@ -69,7 +69,7 @@ class { '::cockpit':
 ## Limitations
 
 * Configuration of `/etc/systemd/system/cockpit.socket.d/listen.conf` is currently not implemented
-Arch support is currently not implemented.
+* Arch support is currently not implemented.
 
 ## Development
 
