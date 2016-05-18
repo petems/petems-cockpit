@@ -8,7 +8,8 @@
   "project_page": "https://github.com/petems/petems-cockpit",
   "issues_url": "https://github.com/petems/petems-cockpit/issues",
   "tags": "cockpit",
-  "operatingsystem_support": [{
+  "operatingsystem_support": [
+    {
     "operatingsystem": "RedHat",
     "operatingsystemrelease": [
       "7"
@@ -35,8 +36,6 @@
     "operatingsystemrelease": [
       "7"
     ]
-  }, {
-
   }],
   "requirements": [{
     "name": "pe",
