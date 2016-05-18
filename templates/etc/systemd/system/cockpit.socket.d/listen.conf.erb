@@ -1,0 +1,4 @@
+[Socket]
+# This is not a typo, it's how systemd resets the ListenStream setting
+ListenStream=
+ListenStream=<%= scope['cockpit::port'] %>

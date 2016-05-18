@@ -2,6 +2,10 @@ require 'spec_helper_acceptance'
 
 describe 'cockpit class' do
 
+  context 'set show_diff' do
+    shell('puppet config set show_diff true', { :acceptable_exit_codes => [0,1] })
+  end
+
   context 'default parameters' do
     # Using puppet_apply as a helper
     it 'should work idempotently with no errors' do
@@ -33,4 +37,5 @@ describe 'cockpit class' do
       end
     end
   end
+
 end

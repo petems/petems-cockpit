@@ -44,6 +44,7 @@ class cockpit (
   $maxstartups      = $::cockpit::params::maxstartups,
   $package_name     = $::cockpit::params::package_name,
   $package_version  = $::cockpit::params::package_version,
+  $port             = $::cockpit::params::port,
   $service_ensure   = $::cockpit::params::service_ensure,
   $service_name     = $::cockpit::params::service_name,
   $yum_preview_repo = $::cockpit::params::yum_preview_repo,
@@ -61,9 +62,17 @@ class cockpit (
   validate_string($service_ensure)
   validate_string($service_name)
 
+  if ($port) {
+    validate_integer($port)
+  }
+
   class { '::cockpit::repo': } ->
   class { '::cockpit::install': } ->
   class { '::cockpit::config': } ~>
   class { '::cockpit::service': } ->
   Class['::cockpit']
+
+  # Update packages on repo refresh
+  Class['::cockpit::repo'] ~>
+  Class['::cockpit::install']
 }

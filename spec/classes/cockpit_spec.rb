@@ -62,9 +62,29 @@ describe 'cockpit' do
         let(:params) {{ 'package_name' => 'custom-package' }}
         it { should contain_package("#{params['package_name']}") }
       end
+      context 'package version' do
+        let(:params) {{ 'package_version' => 'latest' }}
+        it { should contain_package('cockpit').with_ensure('latest') }
+      end
       context 'service name' do
         let(:params) {{ 'service_name' => 'custom-service' }}
         it { should contain_service("#{params['service_name']}") }
+      end
+      context 'port' do
+        let(:params) {{ 'port' => '7777' }}
+        it {
+          should contain_file('/etc/systemd/system/cockpit.socket.d/listen.conf').
+            with(:ensure    => 'file')
+          should contain_file('/etc/systemd/system/cockpit.socket.d/listen.conf').
+            with_content(/ListenStream=7777/)
+          should contain_file('/etc/systemd/system/cockpit.socket.d/').
+            with(:ensure    => 'directory')
+          should contain_exec('Cockpit systemctl daemon-reload').with(
+            :command     => 'systemctl daemon-reload',
+            :refreshonly => true,
+            :path => facts[:path],
+          )
+        }
       end
     end
   end
@@ -74,6 +94,7 @@ describe 'cockpit' do
       let(:facts) do
         facts.merge({
           :fqdn => 'cockpit.example.com',
+          :path => '/usr/lib64/qt-3.3/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/puppetlabs/bin:/root/bin'
         })
       end
 
