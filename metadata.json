@@ -1,6 +1,6 @@
 {
   "name": "petems-cockpit",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Peter Souter",
   "summary": "Module for installing and managing Cockpit (http://cockpit-project.org/)",
   "license": "Apache-2.0",
