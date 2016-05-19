@@ -10,8 +10,6 @@ class cockpit::service {
     service { $::cockpit::service_name:
       ensure     => $::cockpit::service_ensure,
       # enable     => true,
-      hasstatus  => true,
-      hasrestart => true,
     }
   }
 }

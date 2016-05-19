@@ -1,0 +1,10 @@
+HOSTS:
+  fedora-22-x64:
+    roles:
+      - master
+    platform: fedora-22-x86_64
+    box: box-cutter/fedora22
+    hypervisor: vagrant
+CONFIG:
+  type: foss
+  log_level: debug

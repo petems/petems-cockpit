@@ -28,4 +28,26 @@ class cockpit::config {
     show_diff => true,
   }
 
+  if $::cockpit::port {
+    file { '/etc/systemd/system/cockpit.socket.d/':
+      ensure => directory,
+      owner  => 'root',
+      group  => 'root',
+    }
+    ->
+    file { '/etc/systemd/system/cockpit.socket.d/listen.conf':
+      ensure  => file,
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0444',
+      content => template('cockpit/etc/systemd/system/cockpit.socket.d/listen.conf.erb'),
+    }
+    ~>
+    exec { 'Cockpit systemctl daemon-reload':
+      command     => 'systemctl daemon-reload',
+      refreshonly => true,
+      path        => $::path,
+    }
+  }
+
 }

@@ -24,6 +24,7 @@ class cockpit::params {
   $maxstartups      = '10'
   $package_name     = 'cockpit'
   $package_version  = 'installed'
+  $port             = undef
   $service_ensure   = 'running'
   $service_name     = 'cockpit'
 
