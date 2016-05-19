@@ -105,4 +105,38 @@ describe 'cockpit class' do
       end
     end
   end
+
+  context 'using the default port explictly' do
+    # Using puppet_apply as a helper
+    it 'should work idempotently with no errors' do
+      change_port_back_pp = <<-EOS
+      class { '::cockpit':
+        port => '9090',
+      }
+      EOS
+
+      # Run it twice and test for idempotency
+      apply_manifest(change_port_back_pp, :catch_failures => true)
+      apply_manifest(change_port_back_pp, :catch_changes => true)
+    end
+
+    describe package('cockpit') do
+      it { is_expected.to be_installed }
+    end
+
+    describe service('cockpit') do
+      # it { is_expected.to be_enabled }
+      it { is_expected.to be_running }
+    end
+
+    context 'Cockpit should be running on the 9090 port' do
+      describe command('sleep 15 && echo "Give Cockpit time to start"') do
+        its(:exit_status) { should eq 0 }
+      end
+
+      describe command('curl 0.0.0.0:9090/') do
+        its(:stdout) { should match /Cockpit/ }
+      end
+    end
+  end
 end

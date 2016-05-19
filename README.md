@@ -76,6 +76,7 @@ class { '::cockpit':
 ## Limitations
 
 * Arch support is currently not implemented.
+* Changing the port that Cockpit runs on seems with `path` parameter to be broken in older versions. On Fedora's avaliable base package `cockpit-0.67-2.fc22.x86_64` the service refuses to start. The latest version of the package works (`cockpit-0.106-1.fc22.x86_64`). You can use this package by enabling preview repos; `yum_preview_repo => true`.
 
 ## Development
 
