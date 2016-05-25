@@ -10,10 +10,10 @@ describe 'cockpit' do
     it { should create_class('cockpit') }
 
     it { should contain_class('cockpit::params') }
-    it { should contain_class('cockpit::repo').that_comes_before('cockpit::install') }
-    it { should contain_class('cockpit::install').that_comes_before('cockpit::config') }
+    it { should contain_class('cockpit::repo').that_comes_before('Class[cockpit::install]') }
+    it { should contain_class('cockpit::install').that_comes_before('Class[cockpit::config]') }
     it { should contain_class('cockpit::config') }
-    it { should contain_class('cockpit::service').that_subscribes_to('cockpit::config') }
+    it { should contain_class('cockpit::service').that_subscribes_to('Class[cockpit::config]') }
 
     it { should contain_ini_setting('Cockpit LoginTitle').with(
       :ensure    => 'present',
