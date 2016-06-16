@@ -19,11 +19,9 @@ Puppet module for installing, configuring, and managing [Cockpit](http://cockpit
 
 ## Module Description
 
-This module manages the installation of the Hyperic agent and allows you to automatically deploy the latest version of the agent to your machines and configure the agent to report in to your server.
+This module manages the installation of Cockpit.
 
 If you'd prefer, you can also disable the repo after the agent's been installed, or opt out of repo management altogether.
-
-Note that you'll need your preferred distro of Java on the machine. While it isn't a direct dependency, the puppetlabs-java module works well for this purpose.
 
 ## Setup
 
