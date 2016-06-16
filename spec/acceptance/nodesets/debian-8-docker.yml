@@ -8,6 +8,7 @@ HOSTS:
       - 'apt-get clean -y'
       - 'apt-get update -y'
       - 'apt-get install --fix-missing'
+      - 'dpkg --configure -a'
       - 'apt-get install -yq locales apt-transport-https lsb-release wget net-tools libaugeas-dev libaugeas-ruby ntpdate locales-all'
       - 'locale-gen en_US.UTF-8'
     docker_preserve_image: true
