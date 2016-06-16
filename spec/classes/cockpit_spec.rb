@@ -66,6 +66,10 @@ describe 'cockpit' do
         let(:params) {{ 'package_version' => 'latest' }}
         it { should contain_package('cockpit').with_ensure('latest') }
       end
+      context 'manage service' do
+        let(:params) {{ 'manage_service' => false }}
+        it { should_not contain_service("cockpit") }
+      end
       context 'service name' do
         let(:params) {{ 'service_name' => 'custom-service' }}
         it { should contain_service("#{params['service_name']}") }

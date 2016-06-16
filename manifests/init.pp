@@ -41,6 +41,7 @@ class cockpit (
   $logintitle       = $::cockpit::params::logintitle,
   $manage_package   = $::cockpit::params::manage_package,
   $manage_repo      = $::cockpit::params::manage_repo,
+  $manage_service   = $::cockpit::params::manage_service,
   $maxstartups      = $::cockpit::params::maxstartups,
   $package_name     = $::cockpit::params::package_name,
   $package_version  = $::cockpit::params::package_version,
@@ -54,6 +55,7 @@ class cockpit (
   validate_bool($allowunencrypted)
   validate_bool($manage_package)
   validate_bool($manage_repo)
+  validate_bool($manage_service)
 
   validate_string($logintitle)
   validate_string($maxstartups)
