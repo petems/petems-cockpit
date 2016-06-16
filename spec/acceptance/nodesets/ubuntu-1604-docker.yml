@@ -5,7 +5,7 @@ HOSTS:
     hypervisor: docker
     docker_cmd: '["/sbin/init"]'
     docker_image_commands:
-      - 'apt-get install -y net-tools wget curl'
+      - 'apt-get install -y net-tools wget curl apt-utils'
       - 'locale-gen en_US.UTF-8'
     docker_preserve_image: true
 CONFIG:
