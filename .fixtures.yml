@@ -8,6 +8,6 @@ fixtures:
       ref: 1.5.0
     apt:
       repo: "git://github.com/puppetlabs/puppetlabs-apt.git"
-      ref: 2.2.2
+      ref: 2.3.0
   symlinks:
     cockpit: "#{source_dir}"
