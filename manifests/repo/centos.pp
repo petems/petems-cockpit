@@ -9,7 +9,7 @@ class cockpit::repo::centos {
       enabled             => '1',
       gpgcheck            => '1',
       gpgkey              => 'https://copr-be.cloud.fedoraproject.org/results/@cockpit/cockpit-preview/pubkey.gpg',
-      skip_if_unavailable => 'True',
+      skip_if_unavailable => true,
     }
 
   } else {

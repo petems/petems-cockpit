@@ -9,7 +9,7 @@ class cockpit::repo::fedora {
       enabled             => '1',
       gpgcheck            => '1',
       gpgkey              => 'https://copr-be.cloud.fedoraproject.org/results/@cockpit/cockpit-preview/pubkey.gpg',
-      skip_if_unavailable => 'True',
+      skip_if_unavailable => true,
     }
 
   } else {
@@ -23,7 +23,7 @@ class cockpit::repo::fedora {
       gpgkey              => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch',
       metadata_expire     => '6h',
       metalink            => 'https://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&arch=$basearch',
-      skip_if_unavailable => 'False',
+      skip_if_unavailable => false,
     }
 
   }

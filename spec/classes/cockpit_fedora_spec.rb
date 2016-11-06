@@ -27,7 +27,7 @@ describe 'cockpit' do
         :gpgkey              => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch',
         :metadata_expire     => '6h',
         :metalink            => 'https://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&arch=$basearch',
-        :skip_if_unavailable => 'False',
+        :skip_if_unavailable => false,
       )}
     end
 
