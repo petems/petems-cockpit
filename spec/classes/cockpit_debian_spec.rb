@@ -9,6 +9,7 @@ describe 'cockpit' do
       :lsbdistid                 => 'Debian',
       :lsbdistcodename           => 'jessie',
       :lsbdistrelease            => '8.0',
+      :puppetversion             => Puppet.version,
     }}
 
     context 'repo disabled' do
