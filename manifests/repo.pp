@@ -8,10 +8,10 @@ class cockpit::repo {
       'RedHat': {
         case $::operatingsystem {
           'CentOS': {
-            require ::cockpit::repo::centos
+            contain ::cockpit::repo::centos
           }
           'Fedora': {
-            require ::cockpit::repo::fedora
+            contain ::cockpit::repo::fedora
           }
           default: {
             # code
@@ -21,10 +21,10 @@ class cockpit::repo {
       'Debian': {
         case $::operatingsystem {
           'Ubuntu': {
-            require ::cockpit::repo::ubuntu
+            contain ::cockpit::repo::ubuntu
           }
           'Debian': {
-            require ::cockpit::repo::debian
+            contain ::cockpit::repo::debian
           }
           default: {
             # code

@@ -10,7 +10,7 @@ class cockpit::repo::ubuntu {
       id     => '637A2C82EDB1EF02DA658EE1046452EBC99782CC',
       server => 'keyserver.ubuntu.com',
     },
-    before   => Class['apt::update'],
+    notify   => Class['apt::update'],
   }
 
 }
