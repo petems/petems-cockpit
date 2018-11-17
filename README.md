@@ -1,3 +1,5 @@
+I have removed the upper limit on all module dependencies. This module may not work, but at least it won't break dependencies for everything else.
+
 # Cockpit Puppet Module
 [![Build Status](https://travis-ci.org/petems/petems-cockpit.svg?branch=master)](https://travis-ci.org/petems/petems-cockpit)
 
