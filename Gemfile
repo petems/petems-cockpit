@@ -9,7 +9,7 @@ group :test do
   gem 'rspec-core', '>= 3.4'
   gem 'rspec-puppet', :git => 'https://github.com/rodjek/rspec-puppet.git'
   gem 'rspec-puppet-facts'
-  gem 'rubocop', '0.42.0'
+  gem "rubocop", ">= 0.49.0"
   gem 'rubocop-rspec', '~> 1.6' if RUBY_VERSION >= '2.3.0'
   gem 'safe_yaml', '~> 1.0.4'
   gem 'simplecov', '>= 0.11.0'
