@@ -23,7 +23,7 @@ group :test do
   gem 'puppet-lint-unquoted_string-check'
   gem 'puppet-lint-version_comparison-check'
 
-  gem 'nokogiri', '1.5.11'
+  gem "nokogiri", ">= 1.10.4"
   gem 'parallel_tests'
 end
 
