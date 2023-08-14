@@ -1,10 +1,12 @@
+# @api private
 class cockpit::repo::ubuntu {
+  assert_private()
 
-  contain ::apt
+  contain apt
 
-  ::apt::source { 'cockpit':
+  apt::source { 'cockpit':
     location => 'http://ppa.launchpad.net/cockpit-project/cockpit/ubuntu',
-    release  => $::lsbdistcodename,
+    release  => $facts['os']['disto']['codename'],
     repos    => 'main',
     key      => {
       id     => '637A2C82EDB1EF02DA658EE1046452EBC99782CC',
@@ -12,5 +14,4 @@ class cockpit::repo::ubuntu {
     },
     before   => Class['apt::update'],
   }
-
 }

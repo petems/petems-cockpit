@@ -1,39 +1,38 @@
-# cockpit::repo - Used for managing package repositories for cockpit
+# @summary Used for managing package repositories for cockpit
 #
+# @api private
 class cockpit::repo {
+  assert_private()
 
-  if $::cockpit::manage_repo {
-
-    case $::osfamily {
-      'RedHat': {
-        case $::operatingsystem {
-          'CentOS': {
-            require ::cockpit::repo::centos
-          }
-          'Fedora': {
-            require ::cockpit::repo::fedora
-          }
-          default: {
-            # code
-          }
+  case $facts['os']['family'] {
+    'RedHat': {
+      case $facts['os']['name'] {
+        'CentOS': {
+          contain cockpit::repo::centos
+        }
+        'Fedora': {
+          contain cockpit::repo::fedora
+        }
+        default: {
+          # code
         }
       }
-      'Debian': {
-        case $::operatingsystem {
-          'Ubuntu': {
-            require ::cockpit::repo::ubuntu
-          }
-          'Debian': {
-            require ::cockpit::repo::debian
-          }
-          default: {
-            # code
-          }
+    }
+    'Debian': {
+      case $facts['os']['name'] {
+        'Ubuntu': {
+          contain cockpit::repo::ubuntu
+        }
+        'Debian': {
+          contain cockpit::repo::debian
+        }
+        default: {
+          # code
         }
       }
-      default: {
-        # code
-      }
+    }
+    default: {
+      # code
     }
   }
 }

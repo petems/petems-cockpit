@@ -1,8 +1,11 @@
-# cockpit::params - Default parameters
+# @summary Default parameters
+#
+# @api private
 class cockpit::params {
+  assert_private()
 
   # OS Specific Defaults
-  case $::osfamily {
+  case $facts['os']['family'] {
     'RedHat': {
       $yum_preview_repo = false
     }
@@ -10,14 +13,14 @@ class cockpit::params {
       $yum_preview_repo = undef
     }
     default: {
-      fail("${::operatingsystem} not supported")
+      fail("${facts['os']['family']} not supported")
     }
   }
 
   # Defaults for all Operating Systems
   # (Cockpit has consistant naming accross OS's, hooray! :D)
   $allowunencrypted = false
-  $logintitle       = $::fqdn
+  $logintitle       = $facts['networking']['fqdn']
   $manage_package   = true
   $manage_repo      = true
   $manage_service   = true
@@ -27,5 +30,4 @@ class cockpit::params {
   $port             = undef
   $service_ensure   = 'running'
   $service_name     = 'cockpit'
-
 }

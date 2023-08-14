@@ -1,7 +1,8 @@
+# @api private
 class cockpit::repo::fedora {
+  assert_private()
 
-  if $::cockpit::yum_preview_repo {
-
+  if $cockpit::yum_preview_repo {
     yumrepo { 'group_cockpit-cockpit-preview':
       ensure              => 'present',
       baseurl             => 'https://copr-be.cloud.fedoraproject.org/results/@cockpit/cockpit-preview/fedora-$releasever-$basearch/',
@@ -11,9 +12,7 @@ class cockpit::repo::fedora {
       gpgkey              => 'https://copr-be.cloud.fedoraproject.org/results/@cockpit/cockpit-preview/pubkey.gpg',
       skip_if_unavailable => true,
     }
-
   } else {
-
     yumrepo { 'updates':
       ensure              => 'present',
       descr               => 'Fedora $releasever - $basearch - Updates',
@@ -25,7 +24,5 @@ class cockpit::repo::fedora {
       metalink            => 'https://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&arch=$basearch',
       skip_if_unavailable => false,
     }
-
   }
-
 }

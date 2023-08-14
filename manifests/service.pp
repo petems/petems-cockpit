@@ -1,11 +1,11 @@
 # cockpit::repo - Used for managing the cockpit service
 #
+# @api private
 class cockpit::service {
+  assert_private()
 
-  if $::cockpit::manage_service {
-    service { $::cockpit::service_name:
-      ensure => $::cockpit::service_ensure,
-      enable => true,
-    }
+  service { $cockpit::service_name:
+    ensure => $cockpit::service_ensure,
+    enable => true,
   }
 }
