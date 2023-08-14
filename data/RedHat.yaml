@@ -1,0 +1,2 @@
+---
+cockpit::yum_preview_repo: false
