@@ -41,19 +41,19 @@
 #   Whether to use the preview Yum repos to install package. See https://copr.fedorainfracloud.org/coprs/g/cockpit/cockpit-preview/
 #
 class cockpit (
-  Boolean $allowunencrypted           = $cockpit::params::allowunencrypted,
-  String $logintitle                  = $cockpit::params::logintitle,
-  Boolean $manage_package             = $cockpit::params::manage_package,
-  Boolean $manage_repo                = $cockpit::params::manage_repo,
-  Boolean $manage_service             = $cockpit::params::manage_service,
-  String $maxstartups                 = $cockpit::params::maxstartups,
-  String $package_name                = $cockpit::params::package_name,
-  String $package_version             = $cockpit::params::package_version,
-  Optional[Stdlib::Port] $port        = $cockpit::params::port,
-  String $service_ensure              = $cockpit::params::service_ensure,
-  String $service_name                = $cockpit::params::service_name,
-  Optional[Boolean] $yum_preview_repo = $cockpit::params::yum_preview_repo,
-) inherits cockpit::params {
+  Boolean $allowunencrypted           = false,
+  String $logintitle                  = $facts['networking']['fqdn'],
+  Boolean $manage_package             = true,
+  Boolean $manage_repo                = true,
+  Boolean $manage_service             = true,
+  String $maxstartups                 = '10',
+  String $package_name                = 'cockpit',
+  String $package_version             = 'installed',
+  Optional[Stdlib::Port] $port        = undef,
+  String $service_ensure              = 'running',
+  String $service_name                = 'cockpit',
+  Optional[Boolean] $yum_preview_repo = undef,
+) {
   contain cockpit::install
   contain cockpit::config
 
