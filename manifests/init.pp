@@ -37,37 +37,19 @@
 #   install package. See https://copr.fedorainfracloud.org/coprs/g/cockpit/cockpit-preview/
 #
 class cockpit (
-  $allowunencrypted = $::cockpit::params::allowunencrypted,
-  $logintitle       = $::cockpit::params::logintitle,
-  $manage_package   = $::cockpit::params::manage_package,
-  $manage_repo      = $::cockpit::params::manage_repo,
-  $manage_service   = $::cockpit::params::manage_service,
-  $maxstartups      = $::cockpit::params::maxstartups,
-  $package_name     = $::cockpit::params::package_name,
-  $package_version  = $::cockpit::params::package_version,
-  $port             = $::cockpit::params::port,
-  $service_ensure   = $::cockpit::params::service_ensure,
-  $service_name     = $::cockpit::params::service_name,
-  $yum_preview_repo = $::cockpit::params::yum_preview_repo,
+  Boolean $allowunencrypted = $::cockpit::params::allowunencrypted,
+  String  $logintitle       = $::cockpit::params::logintitle,
+  Boolean $manage_package   = $::cockpit::params::manage_package,
+  Boolean $manage_repo      = $::cockpit::params::manage_repo,
+  Boolean $manage_service   = $::cockpit::params::manage_service,
+  String  $maxstartups      = $::cockpit::params::maxstartups,
+  String  $package_name     = $::cockpit::params::package_name,
+  String  $package_version  = $::cockpit::params::package_version,
+  Integer $port             = $::cockpit::params::port,
+  String  $service_ensure   = $::cockpit::params::service_ensure,
+  String  $service_name     = $::cockpit::params::service_name,
+  Boolean $yum_preview_repo = $::cockpit::params::yum_preview_repo,
 ) inherits ::cockpit::params {
-
-
-  validate_bool($allowunencrypted)
-  validate_bool($manage_package)
-  validate_bool($manage_repo)
-  validate_bool($manage_service)
-
-  validate_string($logintitle)
-  validate_string($maxstartups)
-  validate_string($package_name)
-  validate_string($package_version)
-  validate_string($service_ensure)
-  validate_string($service_name)
-
-  if ($port) {
-    validate_integer($port)
-  }
-
   class { '::cockpit::repo': } ->
   class { '::cockpit::install': } ->
   class { '::cockpit::config': } ~>
