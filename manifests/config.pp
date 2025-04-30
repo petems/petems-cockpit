@@ -46,7 +46,7 @@ class cockpit::config {
     exec { 'Cockpit systemctl daemon-reload':
       command     => 'systemctl daemon-reload',
       refreshonly => true,
-      path        => $::path,
+      path        => $facts['path'],
     }
   }
 

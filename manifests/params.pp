@@ -1,6 +1,5 @@
 # cockpit::params - Default parameters
 class cockpit::params {
-
   # OS Specific Defaults
   case $facts['os']['family'] {
     'RedHat': {
@@ -17,7 +16,7 @@ class cockpit::params {
   # Defaults for all Operating Systems
   # (Cockpit has consistant naming accross OS's, hooray! :D)
   $allowunencrypted = false
-  $logintitle       = $::fqdn
+  $logintitle       = $facts['networking']['fqdn']
   $manage_package   = true
   $manage_repo      = true
   $manage_service   = true
@@ -27,5 +26,4 @@ class cockpit::params {
   $port             = 9090
   $service_ensure   = 'running'
   $service_name     = 'cockpit'
-
 }

@@ -4,7 +4,7 @@ class cockpit::repo::ubuntu {
 
   ::apt::source { 'cockpit':
     location => 'http://ppa.launchpad.net/cockpit-project/cockpit/ubuntu',
-    release  => $::lsbdistcodename,
+    release  => $facts['os']['distro']['codename'],
     repos    => 'main',
     key      => {
       id     => '637A2C82EDB1EF02DA658EE1046452EBC99782CC',
