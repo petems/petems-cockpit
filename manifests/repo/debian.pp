@@ -1,6 +1,5 @@
 class cockpit::repo::debian {
-
-  contain ::apt
+  contain apt
 
   apt::source { 'cockpit_unstable':
     location => 'https://fedorapeople.org/groups/cockpit/debian',
@@ -12,5 +11,4 @@ class cockpit::repo::debian {
     },
     before   => Class['apt::update'],
   }
-
 }

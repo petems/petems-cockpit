@@ -75,7 +75,7 @@ describe 'cockpit' do
         it { should contain_service("#{params['service_name']}") }
       end
       context 'port' do
-        let(:params) {{ 'port' => '7777' }}
+        let(:params) {{ 'port' => 7777 }}
         it {
           should contain_file('/etc/systemd/system/cockpit.socket.d/listen.conf').
             with(:ensure    => 'file')
@@ -95,10 +95,12 @@ describe 'cockpit' do
 
   on_supported_os.each do |os, facts|
     context "on #{os}" do
-      let(:facts) do
+      let :facts do
         facts.merge({
-          :fqdn => 'cockpit.example.com',
-          :path => '/usr/lib64/qt-3.3/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/puppetlabs/bin:/root/bin'
+          network: {
+            fqdn: 'cockpit.example.com',
+          },
+          path: "/usr/lib64/qt-3.3/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/puppetlabs/bin:/root/bin", 
         })
       end
 

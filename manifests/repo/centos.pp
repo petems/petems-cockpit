@@ -1,7 +1,5 @@
 class cockpit::repo::centos {
-
-  if $::cockpit::yum_preview_repo {
-
+  if $cockpit::yum_preview_repo {
     yumrepo { 'group_cockpit-cockpit-preview':
       ensure              => 'present',
       baseurl             => 'https://copr-be.cloud.fedoraproject.org/results/@cockpit/cockpit-preview/epel-7-$basearch/',
@@ -11,9 +9,7 @@ class cockpit::repo::centos {
       gpgkey              => 'https://copr-be.cloud.fedoraproject.org/results/@cockpit/cockpit-preview/pubkey.gpg',
       skip_if_unavailable => true,
     }
-
   } else {
-
     yumrepo { 'extras':
       ensure     => 'present',
       descr      => 'CentOS-$releasever - Extras',
@@ -22,7 +18,5 @@ class cockpit::repo::centos {
       gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7',
       mirrorlist => 'http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras&infra=$infra',
     }
-
   }
-
 }
