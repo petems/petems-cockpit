@@ -4,9 +4,9 @@ class cockpit::repo {
 
   if $::cockpit::manage_repo {
 
-    case $::osfamily {
+    case $facts['os']['family'] {
       'RedHat': {
-        case $::operatingsystem {
+        case $facts['os']['operatingsystem'] {
           'CentOS': {
             require ::cockpit::repo::centos
           }
@@ -19,7 +19,7 @@ class cockpit::repo {
         }
       }
       'Debian': {
-        case $::operatingsystem {
+        case $facts['os']['operatingsystem'] {
           'Ubuntu': {
             require ::cockpit::repo::ubuntu
           }

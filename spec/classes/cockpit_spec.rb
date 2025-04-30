@@ -75,7 +75,7 @@ describe 'cockpit' do
         it { should contain_service("#{params['service_name']}") }
       end
       context 'port' do
-        let(:params) {{ 'port' => '7777' }}
+        let(:params) {{ 'port' => 7777 }}
         it {
           should contain_file('/etc/systemd/system/cockpit.socket.d/listen.conf').
             with(:ensure    => 'file')
