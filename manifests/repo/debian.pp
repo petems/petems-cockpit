@@ -12,5 +12,4 @@ class cockpit::repo::debian {
     },
     before   => Class['apt::update'],
   }
-
 }

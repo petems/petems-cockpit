@@ -34,7 +34,7 @@ class cockpit::config {
       owner  => 'root',
       group  => 'root',
     }
-    
+
     -> file { '/etc/systemd/system/cockpit.socket.d/listen.conf':
       ensure  => file,
       owner   => 'root',
@@ -42,12 +42,11 @@ class cockpit::config {
       mode    => '0444',
       content => template('cockpit/etc/systemd/system/cockpit.socket.d/listen.conf.erb'),
     }
-    
+
     ~> exec { 'Cockpit systemctl daemon-reload':
       command     => 'systemctl daemon-reload',
       refreshonly => true,
       path        => $facts['path'],
     }
   }
-
 }

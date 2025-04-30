@@ -12,5 +12,4 @@ class cockpit::repo::ubuntu {
     },
     before   => Class['apt::update'],
   }
-
 }
