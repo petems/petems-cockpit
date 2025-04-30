@@ -2,13 +2,20 @@ name: CI
 
 on: pull_request
 
-concurrency:
-  group: ${{ github.ref_name }}
-  cancel-in-progress: true
-
 jobs:
-  puppet:
-    name: Puppet
-    uses: voxpupuli/gha-puppet/.github/workflows/basic.yml@v1
-    with:
-      rubocop: false
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1' # Not needed with a .ruby-version file
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+          cache-version: 0 # Increment this number if you need to re-download cached gems
+      - name: Install dependencies
+        run: bundle install
+      - name: Static Validations
+        run: bundle exec rake validate lint check
+      - name: Run spec tests
+        run: bundle exec rake parallel_spec
