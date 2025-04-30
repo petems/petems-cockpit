@@ -6,7 +6,7 @@ class cockpit::config {
     path      => '/etc/cockpit/cockpit.conf',
     section   => 'WebService',
     setting   => 'LoginTitle',
-    value     => $::cockpit::logintitle,
+    value     => $cockpit::logintitle,
     show_diff => true,
   }
 
@@ -15,7 +15,7 @@ class cockpit::config {
     path      => '/etc/cockpit/cockpit.conf',
     section   => 'WebService',
     setting   => 'MaxStartups',
-    value     => $::cockpit::maxstartups,
+    value     => $cockpit::maxstartups,
     show_diff => true,
   }
 
@@ -24,11 +24,11 @@ class cockpit::config {
     path      => '/etc/cockpit/cockpit.conf',
     section   => 'WebService',
     setting   => 'AllowUnencrypted',
-    value     => $::cockpit::allowunencrypted,
+    value     => $cockpit::allowunencrypted,
     show_diff => true,
   }
 
-  if $::cockpit::port {
+  if $cockpit::port {
     file { '/etc/systemd/system/cockpit.socket.d/':
       ensure => directory,
       owner  => 'root',

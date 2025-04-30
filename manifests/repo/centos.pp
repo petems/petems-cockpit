@@ -1,7 +1,5 @@
 class cockpit::repo::centos {
-
-  if $::cockpit::yum_preview_repo {
-
+  if $cockpit::yum_preview_repo {
     yumrepo { 'group_cockpit-cockpit-preview':
       ensure              => 'present',
       baseurl             => 'https://copr-be.cloud.fedoraproject.org/results/@cockpit/cockpit-preview/epel-7-$basearch/',

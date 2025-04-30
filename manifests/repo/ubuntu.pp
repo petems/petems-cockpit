@@ -1,6 +1,5 @@
 class cockpit::repo::ubuntu {
-
-  contain ::apt
+  contain apt
 
   ::apt::source { 'cockpit':
     location => 'http://ppa.launchpad.net/cockpit-project/cockpit/ubuntu',
