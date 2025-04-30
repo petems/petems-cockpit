@@ -76,7 +76,7 @@
     },
     {
       "name": "puppetlabs-apt",
-      "version_requirement": ">=6 .2.0"
+      "version_requirement": ">=6.2.0"
     },
     {
       "name": "puppetlabs-inifile",
