@@ -49,14 +49,14 @@ class cockpit (
   String  $service_ensure   = $::cockpit::params::service_ensure,
   String  $service_name     = $::cockpit::params::service_name,
   Boolean $yum_preview_repo = $::cockpit::params::yum_preview_repo,
-) inherits ::cockpit::params {
-  class { '::cockpit::repo': } ->
-  class { '::cockpit::install': } ->
-  class { '::cockpit::config': } ~>
-  class { '::cockpit::service': } ->
-  Class['::cockpit']
+) inherits cockpit::params {
+  class { '::cockpit::repo': }
+  -> class { '::cockpit::install': }
+  -> class { '::cockpit::config': }
+  ~> class { '::cockpit::service': }
+  -> Class['::cockpit']
 
   # Update packages on repo refresh
-  Class['::cockpit::repo'] ~>
-  Class['::cockpit::install']
+  Class['::cockpit::repo']
+  ~> Class['::cockpit::install']
 }
